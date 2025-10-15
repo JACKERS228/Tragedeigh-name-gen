@@ -27,7 +27,16 @@ syll_list1 = ["Ai",
 syll_list2 = ["lah", "ler","seigh","den","en","lon","deigh","dyl","iah","leah","ken","leigh","ryn","neigh","oah","ley","cen","reigh","syn","tyn","lou","ven","len","xton","yn","rinne"]
 alpha = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
+def clear_sc():
+    import platform
+    import os
+    if platform.system() == "Windows":
+        os.system("cls")
+    else:
+        os.system("clear")
+
 def tragediegh(name_based:bool=False):
+    from colorama import Fore,Back,Style
     if name_based == True:
         name = ""
         username = input("Enter your first and last name: ")
@@ -47,4 +56,18 @@ def tragediegh(name_based:bool=False):
         import random as r
         tragedeigh_name = r.choice(syll_list1) + r.choice(syll_list2)
         return tragedeigh_name
-print(tragediegh(True))
+    
+def main():
+    import colorama as rama
+    while True:
+        param = input("Would you like to generate a name based on your own? (y/n) ")
+        param = True if param.capitalize() == "Y" else False
+        print(rama.Fore.GREEN + "Your tragedeigh name is:",rama.Fore.RED + tragediegh(param)) if param == True else print(rama.Fore.GREEN + "Your tragedeigh name is:",rama.Fore.RED + tragediegh(param))
+        input(rama.Fore.RESET + "Press Enter to continue.")
+        clear_sc()
+        if input("Would you like to quit? (y/n)").capitalize() == "Y":
+            break
+        else:
+            clear_sc()
+
+main()
